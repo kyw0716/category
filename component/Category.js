@@ -18,48 +18,46 @@ const Category = () =>{
     }
 
     return(
-        <div 
-            className={styles.menuBox}
-        >
-            <div className={styles.menuLeft}>
-                <div
-                    onClick={onClick}
-                >
-                    카테고리
-                </div>
+        <div className={styles.Category}>
+            <div
+                onClick={onClick}
+                className={styles.navBtn}
+            >
+                카테고리
+            </div>
+            <div 
+                className={styles.menuBox}
+                onMouseLeave={onLeave}
+            >
                 {
                     isClicked === true ? 
                     <>
-                    <div className={styles.dropDownMenus}>
+                    <div className={styles.menuLeft}>
                         <span 
-                            className={styles.dropDownMenu} 
+                            className={dropDownName === "type" ? styles.hover : styles.dropDownMenu} 
                             id="type"
                             onMouseEnter={onEnter}
-                            onMouseLeave={onLeave}
                         >
                             유형
                         </span>
                         <span 
-                            className={styles.dropDownMenu} 
+                            className={dropDownName === "adjective" ? styles.hover : styles.dropDownMenu} 
                             id="adjective"
                             onMouseEnter={onEnter}
-                            onMouseLeave={onLeave}
                         >
                             형용사
                         </span>
                         <span 
-                            className={styles.dropDownMenu} 
+                            className={dropDownName === "genre" ? styles.hover : styles.dropDownMenu} 
                             id="genre"
                             onMouseEnter={onEnter}
-                            onMouseLeave={onLeave}
                         >
                             장르
                         </span>
                         <span 
-                            className={styles.dropDownMenu} 
+                            className={dropDownName === "extension" ? styles.hover : styles.dropDownMenu} 
                             id="extension"
                             onMouseEnter={onEnter}
-                            onMouseLeave={onLeave}
                         >
                             확장자
                         </span>
@@ -67,8 +65,7 @@ const Category = () =>{
                     </> :
                     null
                 }
-            </div>
-            {
+                {
                 dropDownName === "" ?
                 null
                 :
@@ -76,6 +73,7 @@ const Category = () =>{
                     {dropDownName}
                 </div>
             }
+            </div>
         </div>
     )
 }
