@@ -1,0 +1,30 @@
+.menuBox{
+    width: max-content;
+    display: flex;
+    height: 300px;
+    border: 1px solid;
+}
+
+.menuLeft{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid;
+    height: 100%;
+    width: 100px;
+    align-items: center;
+}
+
+.menuRight{
+    width: 300px;
+}
+
+.dropDownMenus{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.dropDownMenu{
+    text-align: center;
+    padding: 15px 0px;
+}
