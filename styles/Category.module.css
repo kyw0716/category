@@ -40,10 +40,18 @@
     height: 50px;
     line-height: 50px;
     padding-left: 15px;
-    background-color: rgb(210, 210, 210);
+    background-color: white;
     margin-bottom: 5px;
 }
 .menuRight{
     width: 400px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+}
+.content{
+    padding: 15px 20px;
+}
+.content:hover{
     background-color: rgb(210, 210, 210);
 }
