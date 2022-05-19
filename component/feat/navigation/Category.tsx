@@ -1,9 +1,31 @@
 import React, { useState } from 'react'
 import Nav from './Nav'
-import styles from '../../../styles/Category.module.css'
 import SubNav from './SubNav'
 import CatJson from '../../share/Category.json'
 import Content from './Content'
+import styled from 'styled-components'
+
+const StyledCategory = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    height: fit-content;
+`;
+
+const StyledMenuBox = styled.div`
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+`;
+
+const StyledMenuLeft = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    height: 400px;
+    background-color: #d77a7a;
+    padding-top: 5px;
+`;
 
 const Category = () =>{
     const [isClicked, setIsClicked] = useState(false);
@@ -22,25 +44,21 @@ const Category = () =>{
     }
 
     return(
-        <div className={styles.Category}>
+        <StyledCategory>
             <Nav 
                 onClick={onClick}
                 nav="카테고리"
             />
-            <div 
-                className={styles.menuBox}
-                onMouseLeave={onLeave}
-            >
+            <StyledMenuBox onMouseLeave={onLeave}>
                 {
                     isClicked === true ? 
                     <>
-                    <div className={styles.menuLeft}>
+                    <StyledMenuLeft>
                         {
                             CatJson.map((current)=>{
                                 return(
                                     <SubNav
                                         key={current.id}
-                                        dropDownName={dropDownName}
                                         onEnter={onEnter}
                                         nav={current.nav}
                                         id={current.id}
@@ -48,7 +66,7 @@ const Category = () =>{
                                 )
                             })
                         }
-                    </div>
+                    </StyledMenuLeft>
                     </> :
                     null
                 }
@@ -60,8 +78,8 @@ const Category = () =>{
                             innerText={dropDownName}
                         />
                 }
-            </div>
-        </div>
+            </StyledMenuBox>
+        </StyledCategory>
     )
 }
 

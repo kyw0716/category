@@ -1,21 +1,29 @@
-import styles from '../../../styles/Category.module.css'
+import styled from 'styled-components';
 
 interface sProps{
-    dropDownName : string;
     onEnter : React.MouseEventHandler<HTMLSpanElement>
     nav : string;
     id : string;
 }
 
-const SubNav = ({dropDownName, onEnter, nav, id} : sProps) => {
+const StyledSpan = styled.span`
+    width: inherit;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 15px;
+    background-color: #D94A4A;
+    margin-bottom: 5px;
+    
+    &:hover{
+        background-color: white;
+    }
+`;
+
+const SubNav = ({onEnter, nav, id} : sProps) => {
     return(
-        <span 
-            className={dropDownName === id ? styles.hover : styles.dropDownMenu} 
-            id={id}
-            onMouseEnter={onEnter}
-        >
+        <StyledSpan id={id} onMouseEnter={onEnter}>
             {nav}
-        </span>
+        </StyledSpan>
     );
 }
 
