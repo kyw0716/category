@@ -1,6 +1,11 @@
 import styles from '../../../styles/Category.module.css'
 
-const Nav = ({onClick, nav}) => {
+interface nProps{
+    onClick : React.MouseEventHandler<HTMLDivElement>;
+    nav : string;
+}
+
+const Nav = ({onClick, nav} : nProps) => {
     return(
         <div
             onClick={onClick}

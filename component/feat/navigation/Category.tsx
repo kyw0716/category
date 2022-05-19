@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import Nav from './Nav'
 import styles from '../../../styles/Category.module.css'
 import SubNav from './SubNav'
@@ -13,8 +13,8 @@ const Category = () =>{
         setIsClicked(current => !current);
     }
 
-    const onEnter = (e) => {
-        setDropDownName(e.target.id);
+    const onEnter = (e : React.MouseEvent<HTMLDivElement>) => {
+        setDropDownName((e.target as HTMLDivElement).id);
     }
 
     const onLeave = () => {
