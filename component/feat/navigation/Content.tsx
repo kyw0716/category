@@ -1,4 +1,6 @@
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import menu from '../../share/menu.json'
 
 interface cProps{
     innerText : string;
@@ -19,18 +21,41 @@ const StyledContent = styled.span`
 `;
 
 const Content = ({innerText} : cProps) => {
-    const onClick = () => {
-        window.location.href = "https://google.com"
+
+    const onClick = (e : React.MouseEvent<HTMLDivElement>) => {
+        alert((e.target as HTMLDivElement).id);
     }
+
     return(
         <StyledContentBox>
-            <StyledContent onClick={onClick}>{innerText}</StyledContent>
-            <StyledContent onClick={onClick}>{innerText}</StyledContent>
-            <StyledContent onClick={onClick}>{innerText}</StyledContent>
-            <StyledContent onClick={onClick}>{innerText}</StyledContent>
-            <StyledContent onClick={onClick}>{innerText}</StyledContent>
-            <StyledContent onClick={onClick}>{innerText}</StyledContent>
-            <StyledContent onClick={onClick}>{innerText}</StyledContent>
+            {
+                innerText === "type" ? menu.type.map((current)=>{
+                    return(
+                        <StyledContent id={current.id} onClick={onClick}>{current.name}</StyledContent>
+                    )
+                }) : null
+            }
+            {
+                innerText === "adjective" ? menu.adjective.map((current)=>{
+                    return(
+                        <StyledContent id={current.id} onClick={onClick}>{current.name}</StyledContent>
+                    )
+                }) : null
+            }
+            {
+                innerText === "genre" ? menu.genre.map((current)=>{
+                    return(
+                        <StyledContent id={current.id} onClick={onClick}>{current.name}</StyledContent>
+                    )
+                }) : null
+            }
+            {
+                innerText === "extension" ? menu.extension.map((current)=>{
+                    return(
+                        <StyledContent id={current.id} onClick={onClick}>{current.name}</StyledContent>
+                    )
+                }) : null
+            }
         </StyledContentBox>
     )
 }
