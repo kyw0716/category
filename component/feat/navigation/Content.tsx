@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import menu from '../../share/menu.json'
+import {menu} from '../../share/menu';
 
 interface cProps{
-    innerText : string;
+    innerText : keyof typeof menu;
 }
 
 const StyledContentBox = styled.div`
@@ -29,32 +28,9 @@ const Content = ({innerText} : cProps) => {
     return(
         <StyledContentBox>
             {
-                innerText === "type" ? menu.type.map((current)=>{
-                    return(
-                        <StyledContent id={current.id} onClick={onClick}>{current.name}</StyledContent>
-                    )
-                }) : null
-            }
-            {
-                innerText === "adjective" ? menu.adjective.map((current)=>{
-                    return(
-                        <StyledContent id={current.id} onClick={onClick}>{current.name}</StyledContent>
-                    )
-                }) : null
-            }
-            {
-                innerText === "genre" ? menu.genre.map((current)=>{
-                    return(
-                        <StyledContent id={current.id} onClick={onClick}>{current.name}</StyledContent>
-                    )
-                }) : null
-            }
-            {
-                innerText === "extension" ? menu.extension.map((current)=>{
-                    return(
-                        <StyledContent id={current.id} onClick={onClick}>{current.name}</StyledContent>
-                    )
-                }) : null
+                menu[innerText].map((current) => 
+                <StyledContent key={current.id} id={current.id} onClick={onClick}>{current.name}</StyledContent>
+                )
             }
         </StyledContentBox>
     )

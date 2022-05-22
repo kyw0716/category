@@ -4,6 +4,7 @@ import SubNav from './SubNav'
 import CatJson from '../../share/Category.json'
 import Content from './Content'
 import styled from 'styled-components'
+import { menu } from '../../share/menu'
 
 const StyledCategory = styled.div`
     display: flex;
@@ -28,11 +29,12 @@ const StyledMenuLeft = styled.div`
 `;
 
 const Category = () =>{
-    const [isClicked, setIsClicked] = useState(false);
+    const [isHovered, setIsHovered] = useState(false);
     const [dropDownName, setDropDownName] = useState("");
 
-    const onClick = () =>{
-        setIsClicked(current => !current);
+    const CategoryButtonOnHover = () => {
+        setDropDownName("type");
+        setIsHovered(true);
     }
 
     const onEnter = (e : React.MouseEvent<HTMLDivElement>) => {
@@ -41,41 +43,38 @@ const Category = () =>{
 
     const onLeave = () => {
         setDropDownName("");
+        setIsHovered(false);
     }
 
     return(
         <StyledCategory>
             <Nav 
-                onClick={onClick}
+                onHover={CategoryButtonOnHover}
                 nav="카테고리"
             />
             <StyledMenuBox onMouseLeave={onLeave}>
                 {
-                    isClicked === true ? 
+                    isHovered &&
                     <>
                     <StyledMenuLeft>
                         {
-                            CatJson.map((current)=>{
-                                return(
+                            CatJson.map(current=>
                                     <SubNav
                                         key={current.id}
                                         onEnter={onEnter}
                                         nav={current.nav}
                                         id={current.id}
+                                        dropDownName={dropDownName}
                                     />
-                                )
-                            })
+                            )
                         }
                     </StyledMenuLeft>
-                    </> :
-                    null
+                    </>
                 }
                 {
-                    dropDownName === "" ?
-                        null
-                        :
+                    dropDownName === "" ||
                         <Content 
-                            innerText={dropDownName}
+                            innerText={dropDownName as keyof typeof menu}
                         />
                 }
             </StyledMenuBox>

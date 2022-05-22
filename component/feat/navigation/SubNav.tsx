@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
-interface sProps{
+type sProps = {
     onEnter : React.MouseEventHandler<HTMLSpanElement>
-    nav : string;
-    id : string;
+    nav : string
+    id : string
+    dropDownName : string
 }
 
 const StyledSpan = styled.span`
@@ -13,17 +14,31 @@ const StyledSpan = styled.span`
     padding-left: 15px;
     background-color: #D94A4A;
     margin-bottom: 5px;
-    
-    &:hover{
-        background-color: white;
-    }
 `;
 
-const SubNav = ({onEnter, nav, id} : sProps) => {
+const StyledSpanHover = styled.span`
+    width: inherit;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 15px;
+    background-color: white;    
+    margin-bottom: 5px;
+`
+
+const SubNav = ({onEnter, nav, id, dropDownName} : sProps) => {
     return(
-        <StyledSpan id={id} onMouseEnter={onEnter}>
-            {nav}
-        </StyledSpan>
+        <>
+        {
+            dropDownName === id ?
+            <StyledSpanHover id={id} onMouseEnter={onEnter}>
+                {nav}
+            </StyledSpanHover>
+            :
+            <StyledSpan id={id} onMouseEnter={onEnter}>
+                {nav}
+            </StyledSpan>
+        }
+        </>
     );
 }
 

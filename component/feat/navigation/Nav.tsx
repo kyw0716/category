@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-interface nProps{
-    onClick : React.MouseEventHandler<HTMLDivElement>;
-    nav : string;
+type nProps = {
+    onHover : React.MouseEventHandler<HTMLDivElement>
+    nav : string
 }
 
 const StyledNav = styled.div`
@@ -13,9 +13,9 @@ const StyledNav = styled.div`
     background-color: #D94A4A;
 `;
 
-const Nav = ({onClick, nav} : nProps) => {
+const Nav = ({nav, onHover} : nProps) => {
     return(
-        <StyledNav onClick={onClick}>
+        <StyledNav onMouseEnter={onHover}>
             {nav}
         </StyledNav>
     )

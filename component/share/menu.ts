@@ -1,4 +1,4 @@
-{
+export const menu = {
     "type":[
         {
             "id" : "type-1",
