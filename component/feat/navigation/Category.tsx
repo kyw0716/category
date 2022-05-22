@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Nav from './Nav'
 import SubNav from './SubNav'
-import CatJson from '../../share/Category.json'
+import { CatJson } from '../../share/Category'
 import Content from './Content'
 import styled from 'styled-components'
 import { menu } from '../../share/menu'
